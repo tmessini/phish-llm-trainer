@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Email Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🛡️ Phishing Email Detector</h1>
+            <p>Paste your email below to check if it's a phishing attempt</p>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <textarea 
+                    id="emailInput" 
+                    placeholder="Paste your email content here...
+
+Example:
+From: security@yourbank.com
+Subject: Urgent: Verify Your Account
+
+Dear Customer,
+Your account has been temporarily suspended. Please click here to verify your identity..."
+                    rows="15"
+                ></textarea>
+                
+                <button id="analyzeBtn" onclick="analyzeEmail()">
+                    <span id="btnText">Analyze Email</span>
+                    <span id="loader" class="loader" style="display: none;"></span>
+                </button>
+            </div>
+
+            <div id="results" class="results-section" style="display: none;">
+                <h2>Analysis Results</h2>
+                
+                <div class="result-card">
+                    <div class="risk-indicator" id="riskIndicator">
+                        <div class="risk-level" id="riskLevel"></div>
+                        <div class="risk-meter">
+                            <div class="risk-fill" id="riskFill"></div>
+                        </div>
+                    </div>
+
+                    <div class="details">
+                        <div class="detail-row">
+                            <span class="label">Prediction:</span>
+                            <span id="prediction" class="value"></span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Confidence:</span>
+                            <span id="confidence" class="value"></span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Phishing Probability:</span>
+                            <span id="phishingProb" class="value"></span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="label">Legitimate Probability:</span>
+                            <span id="legitimateProb" class="value"></span>
+                        </div>
+                    </div>
+
+                    <div id="patterns" class="patterns-section" style="display: none;">
+                        <h3>Suspicious Patterns Detected:</h3>
+                        <ul id="patternsList"></ul>
+                    </div>
+
+                    <div class="recommendation" id="recommendation"></div>
+                </div>
+            </div>
+
+            <div id="error" class="error-message" style="display: none;"></div>
+        </main>
+
+        <footer>
+            <p>Powered by DistilBERT • Trained on phishing email dataset</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+torch
+transformers
+sentence-transformers
+datasets
+scikit-learn
+pandas
+numpy
+matplotlib
+seaborn
+tqdm
+evaluate
+accelerate
+sentencepiece
+protobuf
